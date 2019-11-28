@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,23 +12,10 @@ public class Main {
         List<String> testData = new ArrayList<>();
         String is = in.nextLine();
         for (int i = 0; i < is.length(); i++) {
-            int random_number1 = (int) (Math.random() * 4);
-            char rep = 'f';
-            switch (random_number1) {
-                case 0:
-                    rep = 'f';
-                    break;
-                case 1:
-                    rep = '/';
-                    break;
-                case 2:
-                    rep = '<';
-                    break;
-                case 3:
-                    rep = '>';
-                    break;
-            }
-            testData.add(is.substring(0, i) + rep + is.substring(i + 1));
+            testData.add(is.substring(0, i) + 'f' + is.substring(i + 1));
+            testData.add(is.substring(0, i) + '/' + is.substring(i + 1));
+            testData.add(is.substring(0, i) + '<' + is.substring(i + 1));
+            testData.add(is.substring(0, i) + '>' + is.substring(i + 1));
         }
         //testData.add(in.nextLine());
 
@@ -297,6 +283,11 @@ public class Main {
                     /*
                     вычисляем, на скорлько символов расходятся теги (если на один, то один и тот же тег с ошибкой)
                      */
+                    if (end >= (file.length() - 2) && file.charAt(end + 1) == '>') {
+                        result = file.substring(0, start + 2) + stack.getLast() + file.substring(end - 1);
+                        break;
+                    }
+
                     int diff = 0;
                     if (!stack.isEmpty()) {
                         if ((tagName.length() == (stack.getLast().length() + 1))) {
