@@ -1,4 +1,8 @@
 ### Олимпиадные задачи (Java)
+Ссылка на мой профиль: https://acmp.ru/?main=user&id=290228
+
+Решение для каждой задачи загружено в репозиторий в виде отдельного java-класса (src/)
+
 Решённые задачи:
 - 2 Сумма (19%) https://acmp.ru/index.asp?main=task&id_task=2
 - 347 Покер (33%) https://acmp.ru/index.asp?main=task&id_task=347
